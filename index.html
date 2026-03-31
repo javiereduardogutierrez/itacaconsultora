@@ -48,9 +48,28 @@
     .hero-desc { font-size: 0.95rem; color: var(--ink-light); max-width: 40ch; margin-bottom: 2.8rem; line-height: 1.9; }
     .hero-cta { display: inline-flex; align-items: center; gap: 0.8rem; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); background: var(--ink); padding: 0.9rem 2rem; text-decoration: none; transition: background 0.2s, gap 0.2s; width: fit-content; }
     .hero-cta:hover { background: #0d4585; gap: 1.2rem; }
-    .hero-right { position: relative; overflow: hidden; background: var(--ink); display: flex; flex-direction: column; justify-content: center; }
+  .hero-right {
+  position: relative;
+  overflow: hidden; /* Esto es vital para que lo que sobresale de 'ÍTACA' desaparezca */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
     .hero-right-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, #0d4585 0%, #0a366b 60%, #071f40 100%); }
-    .hero-watermark { position: absolute; bottom: -2rem; right: -1rem; font-family: var(--sans); font-size: 13rem; font-weight: 500; color: rgba(255,255,255,0.04); letter-spacing: 0.14em; line-height: 1; pointer-events: none; user-select: none; }
+    .hero-watermark {
+  position: absolute;
+  bottom: -1rem;     /* Lo subimos un poco para que no se escape por abajo */
+  left: 2rem;      /* Lo movemos un poco a la derecha */
+  font-family: var(--sans);
+  font-size: clamp(6rem, 15vw, 12rem); /* Tamaño fluido: se achica en pantallas chicas */
+  font-weight: 700;  /* Un poco más de peso ayuda a que se lea aunque sea sutil */
+  color: rgba(255,255,255,0.05); /* Mantén la opacidad baja para que sea elegante */
+  letter-spacing: -0.05em; /* Unimos un poco las letras para que ocupe menos ancho */
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
     .hero-right-inner { position: relative; z-index: 1; padding: 5rem 4rem; }
     .hero-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.08); }
     .stat-card { background: rgba(10,54,107,0.6); padding: 2rem; opacity: 0; transform: translateY(16px); animation: fadeUp 0.6s forwards; }
