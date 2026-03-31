@@ -78,10 +78,8 @@
     /* SOBRE MÍ */
     #sobre { background: var(--white); display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: center; }
     .sobre-image { position: relative; }
-    .sobre-image-placeholder { width: 100%; aspect-ratio: 3/4; background: var(--accent-pale); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-    .sobre-image-placeholder::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(10,54,107,0.04) 20px, rgba(10,54,107,0.04) 21px); }
-    .sobre-image-text { font-family: var(--serif); font-size: 0.85rem; color: var(--ink-light); text-align: center; position: relative; z-index: 1; }
-    .sobre-image-frame { position: absolute; top: 1.5rem; left: 1.5rem; right: -1.5rem; bottom: -1.5rem; border: 1px solid rgba(10,54,107,0.2); pointer-events: none; }
+    .sobre-image img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; position: relative; z-index: 1; }
+    .sobre-image-frame { position: absolute; top: 1.5rem; left: 1.5rem; right: -1.5rem; bottom: -1.5rem; border: 1px solid rgba(10,54,107,0.2); pointer-events: none; z-index: 0; }
     .sobre-content p { color: var(--ink-light); margin-bottom: 1.2rem; font-size: 0.97rem; }
     .sobre-content p.lead { font-family: var(--serif); font-size: 1.25rem; color: var(--ink); font-weight: 300; line-height: 1.6; }
     .sobre-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
@@ -113,38 +111,6 @@
     .servicio-card:hover .servicio-num { color: rgba(255,255,255,0.22); }
     .servicio-nombre { font-family: var(--serif); font-size: 1.35rem; font-weight: 300; color: var(--white); margin-bottom: 0.7rem; line-height: 1.3; }
     .servicio-desc { font-size: 0.86rem; color: rgba(255,255,255,0.42); line-height: 1.8; }
-
-    /* INSTAGRAM */
-    #instagram { background: var(--white); }
-    .instagram-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
-    .instagram-link { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
-    .instagram-link:hover { color: var(--ink); border-color: var(--ink); }
-    .instagram-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; width: 100%; }
-    .insta-card { aspect-ratio: 1; background: var(--accent-pale); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; transition: opacity 0.2s; cursor: pointer; }
-    .insta-card:hover { opacity: 0.75; }
-    .insta-card svg { opacity: 0.3; }
-    .insta-card span { font-size: 0.67rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); }
-    .instagram-nota { margin-top: 2rem; background: var(--accent-pale); border: 1px solid var(--border); padding: 1.2rem 1.5rem; font-size: 0.82rem; color: var(--ink-light); line-height: 1.7; }
-    .instagram-nota strong { color: var(--ink); font-weight: 500; }
-    .instagram-nota code { background: rgba(10,54,107,0.08); padding: 0.1rem 0.4rem; font-size: 0.78rem; }
-    .instagram-nota a { color: var(--ink); }
-
-    /* BLOG */
-    #blog { background: var(--bg); }
-    .blog-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
-    .blog-ver-todos { font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
-    .blog-ver-todos:hover { color: var(--ink); border-color: var(--ink); }
-    .blog-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1px; background: var(--border); }
-    .blog-card { background: var(--bg); padding: 2rem; text-decoration: none; color: inherit; display: block; transition: background 0.2s; }
-    .blog-card:hover { background: var(--white); }
-    .blog-card.featured { padding: 2.5rem; }
-    .blog-cat { font-size: 0.67rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); opacity: 0.45; margin-bottom: 0.8rem; }
-    .blog-card-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 300; line-height: 1.35; margin-bottom: 0.8rem; color: var(--ink); }
-    .blog-card.featured .blog-card-title { font-size: 1.85rem; }
-    .blog-excerpt { font-size: 0.86rem; color: var(--ink-light); line-height: 1.7; margin-bottom: 1.2rem; }
-    .blog-meta { font-size: 0.7rem; color: var(--ink-light); }
-    .blog-img-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--accent-pale); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; }
-    .blog-img-placeholder span { font-size: 0.78rem; color: var(--ink-light); }
 
     /* CONTACTO */
     #contacto { background: var(--accent-pale); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
@@ -183,8 +149,6 @@
       #sobre, #contacto { grid-template-columns: 1fr; gap: 3rem; }
       .servicios-grid { grid-template-columns: 1fr 1fr; }
       .servicios-header { flex-direction: column; align-items: flex-start; }
-      .instagram-grid { grid-template-columns: repeat(2, 1fr); }
-      .blog-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 1.5rem; text-align: center; }
     }
@@ -205,27 +169,16 @@
   <ul class="nav-links">
     <li><a href="#sobre">Sobre mí</a></li>
     <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#instagram">Instagram</a></li>
-    <li><a href="#blog">Blog</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
 </nav>
 
-<!-- ── HERO ── -->
 <section id="inicio">
   <div class="hero-left">
     <div class="hero-eyebrow">Consultoría & Coaching</div>
-    <h1 class="hero-title">
-      Claridad<br>
-      para <em>transformar</em><br>
-      organizaciones
-    </h1>
-    <p class="hero-tagline">
-      Arquitectura, vigencia y sentido<br>para organizaciones.
-    </p>
-    <p class="hero-desc">
-      Acompañamos a líderes y equipos en procesos de cambio real, con foco en las personas y en resultados que perduran.
-    </p>
+    <h1 class="hero-title">Claridad<br>para <em>transformar</em><br>organizaciones</h1>
+    <p class="hero-tagline">Arquitectura, vigencia y sentido<br>para organizaciones.</p>
+    <p class="hero-desc">Acompañamos a líderes y equipos en procesos de cambio real, con foco en las personas y en resultados que perduran.</p>
     <a href="#contacto" class="hero-cta">
       Conversemos
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
@@ -245,42 +198,24 @@
   </div>
 </section>
 
-<!-- ── FRASE ── -->
 <div id="frase">
   <div class="frase-inner reveal">
-    <p class="frase-text">
-      Ítaca: <em>Arquitectura, vigencia y sentido</em><br>para organizaciones.
-    </p>
+    <p class="frase-text">Ítaca: <em>Arquitectura, vigencia y sentido</em><br>para organizaciones.</p>
     <p class="frase-sub">Javier Eduardo Gutiérrez — Fundador</p>
   </div>
 </div>
 
-<!-- ── SOBRE MÍ ── -->
 <section id="sobre">
   <div class="sobre-image reveal">
-    <!--
-      PARA PONER TU FOTO:
-      Subí tu imagen al repo de GitHub (ej: foto.jpg)
-      Reemplazá el div.sobre-image-placeholder por:
-      <img src="foto.jpg" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;" />
-    -->
-    <div class="sobre-image-placeholder">
-      <div class="sobre-image-text">Tu foto aquí</div>
-    </div>
+    <img src="image_0.png" alt="Javier Eduardo Gutiérrez" />
     <div class="sobre-image-frame"></div>
   </div>
   <div class="sobre-content reveal">
     <div class="section-label">Sobre mí</div>
     <h2 class="section-title">Soy Javier<br><em style="font-style:italic;color:var(--ink-light)">Eduardo Gutiérrez</em></h2>
-    <p class="lead">
-      Consultor y coach especializado en desarrollo organizacional, con foco en transformar la manera en que las personas trabajan juntas.
-    </p>
-    <p>
-      Fundé Ítaca con la convicción de que las organizaciones necesitan más que estrategia: necesitan sentido. Mi trabajo es ayudar a líderes y equipos a encontrar claridad, construir estructuras que funcionen y sostener el cambio en el tiempo.
-    </p>
-    <p>
-      A lo largo de mi trayectoria acompañé procesos en organizaciones de distintos tamaños y sectores, siempre con un enfoque que combina el rigor metodológico con una mirada profundamente humana.
-    </p>
+    <p class="lead">Consultor y coach especializado en desarrollo organizacional, con foco en transformar la manera en que las personas trabajan juntas.</p>
+    <p>Fundé Ítaca con la convicción de que las organizaciones necesitan más que estrategia: necesitan sentido. Mi trabajo es ayudar a líderes y equipos a encontrar claridad, construir estructuras que funcionen y sostener el cambio en el tiempo.</p>
+    <p>A lo largo de mi trayectoria acompañé procesos en organizaciones de distintos tamaños y sectores, siempre con un enfoque que combina el rigor metodológico con una mirada profundamente humana.</p>
     <div class="sobre-tags">
       <span class="tag">Consultoría</span>
       <span class="tag">Coaching</span>
@@ -292,30 +227,12 @@
   </div>
 </section>
 
-<!-- ── VIDEO ── -->
 <section id="video">
   <div class="video-header reveal">
     <div class="section-label">Video</div>
     <h2 class="section-title">Conocé<br>la propuesta</h2>
   </div>
   <div class="video-wrapper reveal">
-    <!--
-      OPCIONES PARA TU VIDEO:
-
-      YouTube → reemplazá VIDEO_ID por el ID de tu video
-      (el ID es lo que va después de ?v= en la URL de YouTube):
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
-
-      Vimeo → reemplazá VIDEO_ID:
-      <iframe src="https://player.vimeo.com/video/VIDEO_ID" allowfullscreen></iframe>
-
-      Video propio subido a GitHub (ej: intro.mp4):
-      <video controls>
-        <source src="intro.mp4" type="video/mp4" />
-      </video>
-
-      Por ahora se muestra el placeholder de abajo.
-    -->
     <div class="video-placeholder">
       <div class="video-play-btn">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
@@ -323,19 +240,16 @@
       <p class="video-caption">Tu video de presentación irá aquí</p>
     </div>
   </div>
-  <p class="video-hint reveal">Podés usar YouTube, Vimeo o un video propio — ver instrucciones en el código</p>
+  <p class="video-hint reveal">Podés usar YouTube, Vimeo o un video propio</p>
 </section>
 
-<!-- ── SERVICIOS ── -->
 <section id="servicios">
   <div class="servicios-header reveal">
     <div>
       <div class="section-label">Servicios</div>
       <h2 class="section-title">Lo que<br>hacemos<br>juntos</h2>
     </div>
-    <p class="servicios-desc">
-      Cada proceso es único. Diseñamos intervenciones a medida, con metodología probada y foco en impacto real.
-    </p>
+    <p class="servicios-desc">Cada proceso es único. Diseñamos intervenciones a medida, con metodología probada y foco en impacto real.</p>
   </div>
   <div class="servicios-grid reveal">
     <div class="servicio-card">
@@ -371,39 +285,6 @@
   </div>
 </section>
 
-<!-- ── BLOG ── -->
-<section id="blog">
-  <div class="blog-header reveal">
-    <div>
-      <div class="section-label">Blog</div>
-      <h2 class="section-title">Ideas &<br>reflexiones</h2>
-    </div>
-    <a href="#" class="blog-ver-todos">Ver todos los artículos</a>
-  </div>
-  <div class="blog-grid reveal">
-    <a href="#" class="blog-card featured">
-      <div class="blog-img-placeholder"><span>Imagen del artículo</span></div>
-      <div class="blog-cat">Estrategia</div>
-      <div class="blog-card-title">¿Por qué la mayoría de los procesos de cambio fracasan a mitad de camino?</div>
-      <div class="blog-excerpt">Las organizaciones que logran transformarse con éxito no son las que tienen el mejor plan, sino las que construyen el mayor compromiso. Las claves para sostener el cambio en el tiempo.</div>
-      <div class="blog-meta">12 de marzo, 2025 · 5 min de lectura</div>
-    </a>
-    <a href="#" class="blog-card">
-      <div class="blog-cat">Liderazgo</div>
-      <div class="blog-card-title">El liderazgo que viene: más escucha, menos control</div>
-      <div class="blog-excerpt">Cómo los líderes más efectivos están redefiniendo su rol en entornos inciertos.</div>
-      <div class="blog-meta">28 de enero, 2025 · 4 min</div>
-    </a>
-    <a href="#" class="blog-card">
-      <div class="blog-cat">Equipos</div>
-      <div class="blog-card-title">Reuniones que no matan el tiempo: un marco simple y efectivo</div>
-      <div class="blog-excerpt">Tres principios para que tus reuniones generen valor real y no agoten la energía del grupo.</div>
-      <div class="blog-meta">10 de enero, 2025 · 3 min</div>
-    </a>
-  </div>
-</section>
-
-<!-- ── CONTACTO ── -->
 <section id="contacto">
   <div class="contacto-info reveal">
     <div class="section-label">Contacto</div>
@@ -459,15 +340,12 @@
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-logo">ÍTACA<span>Consultoría & Coaching</span></div>
   <p>© 2025 Ítaca · Javier Eduardo Gutiérrez</p>
   <ul class="footer-links">
     <li><a href="#sobre">Sobre mí</a></li>
     <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#instagram">Instagram</a></li>
-    <li><a href="#blog">Blog</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
 </footer>
