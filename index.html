@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ítaca — Consultoría & Coaching</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f7f7;
+      --ink: #0a366b;
+      --ink-light: #9e9e9e;
+      --accent-pale: #e8edf5;
+      --white: #FFFFFF;
+      --border: #dde3ed;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(247,247,247,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent; transition: border-color 0.3s;
+    }
+    nav.scrolled { border-color: var(--border); }
+    .nav-logo { font-size: 1.1rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--ink-light); font-weight: 300; font-size: 0.8rem; letter-spacing: 0.12em; margin-left: 0.4rem; }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a { font-size: 0.74rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* HERO */
+    #inicio { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 4.5rem; }
+    .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem 5rem 6rem; }
+    .hero-eyebrow { font-size: 0.7rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1.8rem; display: flex; align-items: center; gap: 0.8rem; }
+    .hero-eyebrow::before { content: ''; display: block; width: 1.8rem; height: 1px; background: var(--ink-light); }
+    .hero-title { font-family: var(--serif); font-size: clamp(3rem, 4.5vw, 5rem); font-weight: 300; line-height: 1.08; margin-bottom: 1.2rem; }
+    .hero-title em { font-style: italic; color: var(--ink-light); }
+    .hero-tagline { font-family: var(--serif); font-size: 1.05rem; font-style: italic; color: var(--ink-light); margin-bottom: 2.4rem; line-height: 1.6; max-width: 44ch; border-left: 2px solid var(--border); padding-left: 1rem; }
+    .hero-desc { font-size: 0.95rem; color: var(--ink-light); max-width: 40ch; margin-bottom: 2.8rem; line-height: 1.9; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 0.8rem; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); background: var(--ink); padding: 0.9rem 2rem; text-decoration: none; transition: background 0.2s, gap 0.2s; width: fit-content; }
+    .hero-cta:hover { background: #0d4585; gap: 1.2rem; }
+    .hero-right { position: relative; overflow: hidden; background: var(--ink); display: flex; flex-direction: column; justify-content: center; }
+    .hero-right-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, #0d4585 0%, #0a366b 60%, #071f40 100%); }
+    .hero-watermark { position: absolute; bottom: -2rem; right: -1rem; font-family: var(--sans); font-size: 13rem; font-weight: 500; color: rgba(255,255,255,0.04); letter-spacing: 0.14em; line-height: 1; pointer-events: none; user-select: none; }
+    .hero-right-inner { position: relative; z-index: 1; padding: 5rem 4rem; }
+    .hero-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.08); }
+    .stat-card { background: rgba(10,54,107,0.6); padding: 2rem; opacity: 0; transform: translateY(16px); animation: fadeUp 0.6s forwards; }
+    .stat-card:nth-child(1) { animation-delay: 0.2s; }
+    .stat-card:nth-child(2) { animation-delay: 0.35s; }
+    .stat-card:nth-child(3) { animation-delay: 0.5s; }
+    .stat-card:nth-child(4) { animation-delay: 0.65s; }
+    .stat-number { font-family: var(--serif); font-size: 2.8rem; font-weight: 300; color: var(--white); line-height: 1; margin-bottom: 0.3rem; }
+    .stat-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* SHARED */
+    section { padding: 7rem 6rem; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem; }
+    .section-label::before { content: ''; display: block; width: 1.8rem; height: 1px; background: var(--ink-light); }
+    .section-title { font-family: var(--serif); font-size: clamp(2rem, 3.2vw, 3.2rem); font-weight: 300; line-height: 1.15; margin-bottom: 1rem; }
+
+    /* FRASE BANNER */
+    #frase { background: var(--ink); padding: 5rem 6rem; display: flex; align-items: center; justify-content: center; text-align: center; }
+    .frase-inner { max-width: 820px; }
+    .frase-text { font-family: var(--serif); font-size: clamp(1.5rem, 2.8vw, 2.6rem); font-weight: 300; color: var(--white); line-height: 1.45; margin-bottom: 1.2rem; }
+    .frase-text em { font-style: italic; color: rgba(255,255,255,0.5); }
+    .frase-sub { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+
+    /* SOBRE MÍ */
+    #sobre { background: var(--white); display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: center; }
+    .sobre-image { position: relative; }
+    .sobre-image-placeholder { width: 100%; aspect-ratio: 3/4; background: var(--accent-pale); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .sobre-image-placeholder::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(10,54,107,0.04) 20px, rgba(10,54,107,0.04) 21px); }
+    .sobre-image-text { font-family: var(--serif); font-size: 0.85rem; color: var(--ink-light); text-align: center; position: relative; z-index: 1; }
+    .sobre-image-frame { position: absolute; top: 1.5rem; left: 1.5rem; right: -1.5rem; bottom: -1.5rem; border: 1px solid rgba(10,54,107,0.2); pointer-events: none; }
+    .sobre-content p { color: var(--ink-light); margin-bottom: 1.2rem; font-size: 0.97rem; }
+    .sobre-content p.lead { font-family: var(--serif); font-size: 1.25rem; color: var(--ink); font-weight: 300; line-height: 1.6; }
+    .sobre-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+    .tag { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--border); padding: 0.35rem 0.8rem; color: var(--ink-light); }
+
+    /* VIDEO */
+    #video { background: var(--bg); }
+    .video-header { margin-bottom: 3rem; }
+    .video-wrapper { position: relative; max-width: 860px; margin: 0 auto; background: var(--ink); }
+    .video-wrapper iframe, .video-wrapper video { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
+    .video-placeholder { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #0a366b, #071f40); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; cursor: pointer; transition: opacity 0.2s; }
+    .video-placeholder:hover { opacity: 0.9; }
+    .video-play-btn { width: 72px; height: 72px; border: 2px solid rgba(255,255,255,0.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s, transform 0.2s; }
+    .video-placeholder:hover .video-play-btn { border-color: rgba(255,255,255,0.8); transform: scale(1.08); }
+    .video-caption { font-family: var(--serif); font-style: italic; font-size: 0.9rem; color: rgba(255,255,255,0.35); }
+    .video-hint { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); margin-top: 1.5rem; text-align: center; }
+
+    /* SERVICIOS */
+    #servicios { background: var(--ink); color: var(--white); }
+    #servicios .section-label { color: rgba(255,255,255,0.4); }
+    #servicios .section-label::before { background: rgba(255,255,255,0.2); }
+    #servicios .section-title { color: var(--white); }
+    .servicios-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; gap: 2rem; }
+    .servicios-desc { color: rgba(255,255,255,0.45); font-size: 0.9rem; max-width: 40ch; }
+    .servicios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.06); }
+    .servicio-card { background: var(--ink); padding: 2.5rem; transition: background 0.3s; border: 1px solid rgba(255,255,255,0.04); }
+    .servicio-card:hover { background: #0d3f7a; }
+    .servicio-num { font-family: var(--serif); font-size: 3rem; font-weight: 300; color: rgba(255,255,255,0.1); line-height: 1; margin-bottom: 1.5rem; transition: color 0.3s; }
+    .servicio-card:hover .servicio-num { color: rgba(255,255,255,0.22); }
+    .servicio-nombre { font-family: var(--serif); font-size: 1.35rem; font-weight: 300; color: var(--white); margin-bottom: 0.7rem; line-height: 1.3; }
+    .servicio-desc { font-size: 0.86rem; color: rgba(255,255,255,0.42); line-height: 1.8; }
+
+    /* INSTAGRAM */
+    #instagram { background: var(--white); }
+    .instagram-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+    .instagram-link { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+    .instagram-link:hover { color: var(--ink); border-color: var(--ink); }
+    .instagram-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; width: 100%; }
+    .insta-card { aspect-ratio: 1; background: var(--accent-pale); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; transition: opacity 0.2s; cursor: pointer; }
+    .insta-card:hover { opacity: 0.75; }
+    .insta-card svg { opacity: 0.3; }
+    .insta-card span { font-size: 0.67rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); }
+    .instagram-nota { margin-top: 2rem; background: var(--accent-pale); border: 1px solid var(--border); padding: 1.2rem 1.5rem; font-size: 0.82rem; color: var(--ink-light); line-height: 1.7; }
+    .instagram-nota strong { color: var(--ink); font-weight: 500; }
+    .instagram-nota code { background: rgba(10,54,107,0.08); padding: 0.1rem 0.4rem; font-size: 0.78rem; }
+    .instagram-nota a { color: var(--ink); }
+
+    /* BLOG */
+    #blog { background: var(--bg); }
+    .blog-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+    .blog-ver-todos { font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+    .blog-ver-todos:hover { color: var(--ink); border-color: var(--ink); }
+    .blog-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1px; background: var(--border); }
+    .blog-card { background: var(--bg); padding: 2rem; text-decoration: none; color: inherit; display: block; transition: background 0.2s; }
+    .blog-card:hover { background: var(--white); }
+    .blog-card.featured { padding: 2.5rem; }
+    .blog-cat { font-size: 0.67rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); opacity: 0.45; margin-bottom: 0.8rem; }
+    .blog-card-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 300; line-height: 1.35; margin-bottom: 0.8rem; color: var(--ink); }
+    .blog-card.featured .blog-card-title { font-size: 1.85rem; }
+    .blog-excerpt { font-size: 0.86rem; color: var(--ink-light); line-height: 1.7; margin-bottom: 1.2rem; }
+    .blog-meta { font-size: 0.7rem; color: var(--ink-light); }
+    .blog-img-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--accent-pale); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; }
+    .blog-img-placeholder span { font-size: 0.78rem; color: var(--ink-light); }
+
+    /* CONTACTO */
+    #contacto { background: var(--accent-pale); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+    .contacto-bajada { font-size: 0.95rem; color: var(--ink-light); margin-top: 1rem; margin-bottom: 2.5rem; max-width: 38ch; }
+    .contacto-dato { display: flex; flex-direction: column; margin-bottom: 1.6rem; }
+    .contacto-dato-label { font-size: 0.67rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); opacity: 0.45; margin-bottom: 0.3rem; }
+    .contacto-dato-val { font-family: var(--serif); font-size: 1.05rem; font-weight: 300; color: var(--ink); }
+    .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-group label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); }
+    .form-group input, .form-group textarea, .form-group select { background: var(--white); border: 1px solid var(--border); padding: 0.8rem 1rem; font-family: var(--sans); font-size: 0.9rem; font-weight: 300; color: var(--ink); outline: none; transition: border-color 0.2s; appearance: none; -webkit-appearance: none; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--ink); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit { display: inline-flex; align-items: center; gap: 0.8rem; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); background: var(--ink); border: none; padding: 0.9rem 2rem; cursor: pointer; transition: background 0.2s; width: fit-content; margin-top: 0.3rem; }
+    .form-submit:hover { background: #0d4585; }
+
+    /* FOOTER */
+    footer { background: var(--ink); color: rgba(255,255,255,0.4); padding: 2.5rem 6rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-size: 1rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--white); }
+    .footer-logo span { color: rgba(255,255,255,0.3); font-weight: 300; font-size: 0.78rem; margin-left: 0.3rem; }
+    footer p { font-size: 0.74rem; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #inicio { grid-template-columns: 1fr; }
+      .hero-left { padding: 5rem 1.5rem 3rem; }
+      .hero-right { min-height: 45vh; }
+      section { padding: 4rem 1.5rem; }
+      #frase { padding: 4rem 1.5rem; }
+      #sobre, #contacto { grid-template-columns: 1fr; gap: 3rem; }
+      .servicios-grid { grid-template-columns: 1fr 1fr; }
+      .servicios-header { flex-direction: column; align-items: flex-start; }
+      .instagram-grid { grid-template-columns: repeat(2, 1fr); }
+      .blog-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      .servicios-grid { grid-template-columns: 1fr; }
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 1; transform: translateY(0); transition: opacity 0.7s ease, transform 0.7s ease; }
+    body.js-ready .reveal { opacity: 0; transform: translateY(28px); }
+    body.js-ready .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo" href="#inicio">ÍTACA<span>Consultoría & Coaching</span></a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre mí</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="inicio">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Consultoría & Coaching</div>
+    <h1 class="hero-title">
+      Claridad<br>
+      para <em>transformar</em><br>
+      organizaciones
+    </h1>
+    <p class="hero-tagline">
+      Arquitectura, vigencia y sentido<br>para organizaciones.
+    </p>
+    <p class="hero-desc">
+      Acompañamos a líderes y equipos en procesos de cambio real, con foco en las personas y en resultados que perduran.
+    </p>
+    <a href="#contacto" class="hero-cta">
+      Conversemos
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+    </a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="hero-watermark">ÍTACA</div>
+    <div class="hero-right-inner">
+      <div class="hero-stat-grid">
+        <div class="stat-card"><div class="stat-number">10+</div><div class="stat-label">Años de experiencia</div></div>
+        <div class="stat-card"><div class="stat-number">50+</div><div class="stat-label">Proyectos realizados</div></div>
+        <div class="stat-card"><div class="stat-number">30+</div><div class="stat-label">Clientes activos</div></div>
+        <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Países de alcance</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FRASE ── -->
+<div id="frase">
+  <div class="frase-inner reveal">
+    <p class="frase-text">
+      Ítaca: <em>Arquitectura, vigencia y sentido</em><br>para organizaciones.
+    </p>
+    <p class="frase-sub">Javier Eduardo Gutiérrez — Fundador</p>
+  </div>
+</div>
+
+<!-- ── SOBRE MÍ ── -->
+<section id="sobre">
+  <div class="sobre-image reveal">
+    <!--
+      PARA PONER TU FOTO:
+      Subí tu imagen al repo de GitHub (ej: foto.jpg)
+      Reemplazá el div.sobre-image-placeholder por:
+      <img src="foto.jpg" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;" />
+    -->
+    <div class="sobre-image-placeholder">
+      <div class="sobre-image-text">Tu foto aquí</div>
+    </div>
+    <div class="sobre-image-frame"></div>
+  </div>
+  <div class="sobre-content reveal">
+    <div class="section-label">Sobre mí</div>
+    <h2 class="section-title">Soy Javier<br><em style="font-style:italic;color:var(--ink-light)">Eduardo Gutiérrez</em></h2>
+    <p class="lead">
+      Consultor y coach especializado en desarrollo organizacional, con foco en transformar la manera en que las personas trabajan juntas.
+    </p>
+    <p>
+      Fundé Ítaca con la convicción de que las organizaciones necesitan más que estrategia: necesitan sentido. Mi trabajo es ayudar a líderes y equipos a encontrar claridad, construir estructuras que funcionen y sostener el cambio en el tiempo.
+    </p>
+    <p>
+      A lo largo de mi trayectoria acompañé procesos en organizaciones de distintos tamaños y sectores, siempre con un enfoque que combina el rigor metodológico con una mirada profundamente humana.
+    </p>
+    <div class="sobre-tags">
+      <span class="tag">Consultoría</span>
+      <span class="tag">Coaching</span>
+      <span class="tag">Liderazgo</span>
+      <span class="tag">Gestión del cambio</span>
+      <span class="tag">Cultura organizacional</span>
+      <span class="tag">Estrategia</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── VIDEO ── -->
+<section id="video">
+  <div class="video-header reveal">
+    <div class="section-label">Video</div>
+    <h2 class="section-title">Conocé<br>la propuesta</h2>
+  </div>
+  <div class="video-wrapper reveal">
+    <!--
+      OPCIONES PARA TU VIDEO:
+
+      YouTube → reemplazá VIDEO_ID por el ID de tu video
+      (el ID es lo que va después de ?v= en la URL de YouTube):
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+
+      Vimeo → reemplazá VIDEO_ID:
+      <iframe src="https://player.vimeo.com/video/VIDEO_ID" allowfullscreen></iframe>
+
+      Video propio subido a GitHub (ej: intro.mp4):
+      <video controls>
+        <source src="intro.mp4" type="video/mp4" />
+      </video>
+
+      Por ahora se muestra el placeholder de abajo.
+    -->
+    <div class="video-placeholder">
+      <div class="video-play-btn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+      </div>
+      <p class="video-caption">Tu video de presentación irá aquí</p>
+    </div>
+  </div>
+  <p class="video-hint reveal">Podés usar YouTube, Vimeo o un video propio — ver instrucciones en el código</p>
+</section>
+
+<!-- ── SERVICIOS ── -->
+<section id="servicios">
+  <div class="servicios-header reveal">
+    <div>
+      <div class="section-label">Servicios</div>
+      <h2 class="section-title">Lo que<br>hacemos<br>juntos</h2>
+    </div>
+    <p class="servicios-desc">
+      Cada proceso es único. Diseñamos intervenciones a medida, con metodología probada y foco en impacto real.
+    </p>
+  </div>
+  <div class="servicios-grid reveal">
+    <div class="servicio-card">
+      <div class="servicio-num">01</div>
+      <div class="servicio-nombre">Consultoría Estratégica</div>
+      <div class="servicio-desc">Diagnóstico y diseño de estrategias para que tu organización alcance sus objetivos con claridad y sostenibilidad.</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">02</div>
+      <div class="servicio-nombre">Coaching Ejecutivo</div>
+      <div class="servicio-desc">Sesiones individuales para líderes que buscan potenciar su desempeño, tomar mejores decisiones y crecer profesionalmente.</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">03</div>
+      <div class="servicio-nombre">Desarrollo Organizacional</div>
+      <div class="servicio-desc">Acompañamiento en la construcción de culturas saludables, estructuras funcionales y dinámicas de equipo de alto rendimiento.</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">04</div>
+      <div class="servicio-nombre">Gestión del Cambio</div>
+      <div class="servicio-desc">Metodología y acompañamiento para transitar transformaciones organizacionales con el menor impacto posible y el mayor resultado.</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">05</div>
+      <div class="servicio-nombre">Formación y Talleres</div>
+      <div class="servicio-desc">Programas de capacitación diseñados a medida: liderazgo, comunicación, toma de decisiones y trabajo en equipo.</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">06</div>
+      <div class="servicio-nombre">Diagnóstico Organizacional</div>
+      <div class="servicio-desc">Análisis profundo de la situación actual de tu empresa para identificar oportunidades, bloqueos y focos de mejora.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INSTAGRAM ── -->
+<section id="instagram">
+  <div class="instagram-header reveal">
+    <div>
+      <div class="section-label">Instagram</div>
+      <h2 class="section-title">Últimas<br>publicaciones</h2>
+    </div>
+    <a href="https://instagram.com/itacaconsultora" target="_blank" class="instagram-link">
+      @itacaconsultora ↗
+    </a>
+  </div>
+
+  <div class="reveal">
+    <!--
+      PARA MOSTRAR TUS POSTS REALES DE INSTAGRAM:
+
+      OPCIÓN RECOMENDADA (gratis) — Elfsight:
+      1. Andá a https://elfsight.com/instagram-feed-widget/
+      2. Creá una cuenta gratis y conectá tu Instagram
+      3. Copiá el código del widget y pegalo ACÁ (reemplazando el div.instagram-grid)
+
+      OPCIÓN ALTERNATIVA (gratis) — SnapWidget:
+      1. Andá a https://snapwidget.com
+      2. Creá el widget con @itacaconsultora
+      3. Pegá el iframe generado acá
+
+      Por ahora se muestran estos placeholders:
+    -->
+    <div class="instagram-grid">
+      <div class="insta-card"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0a366b" stroke-width="1.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#0a366b" stroke="none"/></svg><span>Post 1</span></div>
+      <div class="insta-card"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0a366b" stroke-width="1.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#0a366b" stroke="none"/></svg><span>Post 2</span></div>
+      <div class="insta-card"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0a366b" stroke-width="1.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#0a366b" stroke="none"/></svg><span>Post 3</span></div>
+      <div class="insta-card"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0a366b" stroke-width="1.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#0a366b" stroke="none"/></svg><span>Post 4</span></div>
+    </div>
+    <div class="instagram-nota">
+      <strong>Para conectar tu Instagram real:</strong> entrá a
+      <a href="https://elfsight.com/instagram-feed-widget/" target="_blank">elfsight.com</a>
+      o <a href="https://snapwidget.com" target="_blank">snapwidget.com</a>,
+      creá un widget gratis con tu cuenta <code>@itacaconsultora</code> y pegá el código reemplazando el bloque <code>instagram-grid</code> de arriba.
+    </div>
+  </div>
+</section>
+
+<!-- ── BLOG ── -->
+<section id="blog">
+  <div class="blog-header reveal">
+    <div>
+      <div class="section-label">Blog</div>
+      <h2 class="section-title">Ideas &<br>reflexiones</h2>
+    </div>
+    <a href="#" class="blog-ver-todos">Ver todos los artículos</a>
+  </div>
+  <div class="blog-grid reveal">
+    <a href="#" class="blog-card featured">
+      <div class="blog-img-placeholder"><span>Imagen del artículo</span></div>
+      <div class="blog-cat">Estrategia</div>
+      <div class="blog-card-title">¿Por qué la mayoría de los procesos de cambio fracasan a mitad de camino?</div>
+      <div class="blog-excerpt">Las organizaciones que logran transformarse con éxito no son las que tienen el mejor plan, sino las que construyen el mayor compromiso. Las claves para sostener el cambio en el tiempo.</div>
+      <div class="blog-meta">12 de marzo, 2025 · 5 min de lectura</div>
+    </a>
+    <a href="#" class="blog-card">
+      <div class="blog-cat">Liderazgo</div>
+      <div class="blog-card-title">El liderazgo que viene: más escucha, menos control</div>
+      <div class="blog-excerpt">Cómo los líderes más efectivos están redefiniendo su rol en entornos inciertos.</div>
+      <div class="blog-meta">28 de enero, 2025 · 4 min</div>
+    </a>
+    <a href="#" class="blog-card">
+      <div class="blog-cat">Equipos</div>
+      <div class="blog-card-title">Reuniones que no matan el tiempo: un marco simple y efectivo</div>
+      <div class="blog-excerpt">Tres principios para que tus reuniones generen valor real y no agoten la energía del grupo.</div>
+      <div class="blog-meta">10 de enero, 2025 · 3 min</div>
+    </a>
+  </div>
+</section>
+
+<!-- ── CONTACTO ── -->
+<section id="contacto">
+  <div class="contacto-info reveal">
+    <div class="section-label">Contacto</div>
+    <h2 class="section-title">Hablemos<br>de tu proyecto</h2>
+    <p class="contacto-bajada">Si tenés una pregunta, un proyecto en mente, o simplemente querés conocer cómo puedo ayudarte, escribime.</p>
+    <div class="contacto-dato">
+      <span class="contacto-dato-label">Email</span>
+      <span class="contacto-dato-val">hola@itacaconsultora.com</span>
+    </div>
+    <div class="contacto-dato">
+      <span class="contacto-dato-label">Ubicación</span>
+      <span class="contacto-dato-val">Buenos Aires, Argentina</span>
+    </div>
+    <div class="contacto-dato">
+      <span class="contacto-dato-label">Disponibilidad</span>
+      <span class="contacto-dato-val">Lunes a viernes, 9 a 18 h</span>
+    </div>
+  </div>
+  <div class="reveal">
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Tu nombre" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="tu@email.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="servicio">¿Qué te interesa?</label>
+        <select id="servicio">
+          <option value="" disabled selected>Seleccioná un servicio</option>
+          <option>Consultoría Estratégica</option>
+          <option>Coaching Ejecutivo</option>
+          <option>Desarrollo Organizacional</option>
+          <option>Gestión del Cambio</option>
+          <option>Formación y Talleres</option>
+          <option>Diagnóstico Organizacional</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" placeholder="Contame brevemente sobre tu proyecto o consulta..." required></textarea>
+      </div>
+      <button type="submit" class="form-submit">
+        Enviar mensaje
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">ÍTACA<span>Consultoría & Coaching</span></div>
+  <p>© 2025 Ítaca · Javier Eduardo Gutiérrez</p>
+  <ul class="footer-links">
+    <li><a href="#sobre">Sobre mí</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
+
+  if ('IntersectionObserver' in window) {
+    document.body.classList.add('js-ready');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '¡Mensaje enviado! ✓';
+    btn.style.background = '#1a5c2a';
+    setTimeout(() => {
+      btn.innerHTML = 'Enviar mensaje <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+</script>
+</body>
+</html>
