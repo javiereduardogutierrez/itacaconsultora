@@ -56,18 +56,24 @@
   justify-content: center;
 }
     .hero-right-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, #0d4585 0%, #0a366b 60%, #071f40 100%); }
-    .hero-watermark {
+   .hero-watermark {
   position: absolute;
-  bottom: -1rem;     /* Lo subimos un poco para que no se escape por abajo */
-  left: 2rem;      /* Lo movemos un poco a la derecha */
+  /* El truco para centrar absolutamente */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  
   font-family: var(--sans);
-  font-size: clamp(6rem, 15vw, 12rem); /* Tamaño fluido: se achica en pantallas chicas */
-  font-weight: 700;  /* Un poco más de peso ayuda a que se lea aunque sea sutil */
-  color: rgba(255,255,255,0.05); /* Mantén la opacidad baja para que sea elegante */
-  letter-spacing: -0.05em; /* Unimos un poco las letras para que ocupe menos ancho */
+  /* Ajustamos el tamaño para que no sature el recuadro */
+  font-size: clamp(5rem, 12vw, 10rem); 
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.03); /* Un poco más sutil para que no compita con los números */
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   line-height: 1;
   pointer-events: none;
   user-select: none;
+  white-space: nowrap; /* Evita que la palabra se rompa en dos líneas */
   z-index: 0;
 }
     .hero-right-inner { position: relative; z-index: 1; padding: 5rem 4rem; }
