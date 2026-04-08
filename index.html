@@ -101,6 +101,20 @@
     .frase-text em { font-style: italic; color: rgba(255,255,255,0.5); }
     .frase-sub { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
 
+    /* PILARES */
+    #pilares { background: var(--white); padding: 7rem 6rem; }
+    .pilares-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 4rem; }
+    .pilar-card { border-top: 1px solid var(--border); padding-top: 2rem; }
+    .pilar-num { font-family: var(--serif); font-size: 0.8rem; font-weight: 300; color: var(--ink-light); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1rem; }
+    .pilar-titulo { font-family: var(--serif); font-size: 1.9rem; font-weight: 300; color: var(--ink); margin-bottom: 1.2rem; line-height: 1.2; }
+    .pilar-texto { font-size: 0.92rem; color: var(--ink-light); line-height: 1.9; }
+    .pilar-texto p { margin-bottom: 0.9rem; }
+    .pilar-texto p:last-child { margin-bottom: 0; }
+    .pilar-lista { list-style: none; padding: 0; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem; }
+    .pilar-lista li { font-size: 0.88rem; color: var(--ink-light); padding-left: 1rem; border-left: 2px solid var(--border); line-height: 1.7; }
+    .pilar-lista li strong { display: block; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); font-weight: 500; margin-bottom: 0.2rem; }
+    @media (max-width: 960px) { .pilares-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
     /* SOBRE MÍ */
     #sobre { background: var(--white); display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: center; }
     .sobre-image { position: relative; }
@@ -231,6 +245,50 @@
   </div>
 </div>
 
+<section id="pilares">
+  <div class="reveal">
+    <div class="section-label">Nuestra propuesta</div>
+    <h2 class="section-title">Tres pilares<br>de nuestra <em style="font-style:italic;color:var(--ink-light)">mirada</em></h2>
+  </div>
+  <div class="pilares-grid">
+
+    <div class="pilar-card reveal">
+      <div class="pilar-num">01</div>
+      <div class="pilar-titulo">Arquitectura</div>
+      <div class="pilar-texto">
+        <p>No existe un organigrama que podamos replicar y que nos asegure un buen funcionamiento. Tampoco una receta mágica que integre la estructura con las conversaciones estratégicas, tácticas y operativas. Las empresas son una red de conversaciones que se van generando a sí mismas, el saber y el liderazgo integrándose.</p>
+        <p>Desde Ítaca te ayudamos a organizar el mejor diseño posible sin perder de vista el momento —emociones y querencias— que se encuentran tanto dueños de negocios como sus líderes.</p>
+        <p>Funcionamiento y formalización del Directorio, organización de reuniones con Gerencias, armado de planes de negocios, seguimientos, identificación de puestos y colaboradores clave: son parte de la contribución que podemos aportar. En Ítaca importa el camino.</p>
+      </div>
+    </div>
+
+    <div class="pilar-card reveal">
+      <div class="pilar-num">02</div>
+      <div class="pilar-titulo">Vigencia</div>
+      <div class="pilar-texto">
+        <p>Quien forma o formó parte de una empresa familiar sabe que existe una fuerza que puede multiplicar los esfuerzos y que el sentido de pertenencia muchas veces se aglutina. Trascender y dejar un legado tiene mucho sentido en la mayoría de estas organizaciones.</p>
+        <p>¿Cómo desarrollo mi empresa y a la par preparo la transición a las siguientes generaciones? ¿Cómo doy lugar a los liderazgos que emergen y cuido el valor construido? ¿Cómo nos organizamos para las conversaciones difíciles, el protocolo familiar y el acceso a la gestión?</p>
+        <p>Desde Ítaca buscamos potenciar todo lo bueno del hoy y despejar los miedos que puede traer el mañana. Somos Ítaca, nos importa el camino.</p>
+      </div>
+    </div>
+
+    <div class="pilar-card reveal">
+      <div class="pilar-num">03</div>
+      <div class="pilar-titulo">Sentido</div>
+      <div class="pilar-texto">
+        <p>En las empresas, el sentido es la base de la cultura organizacional: la narrativa compartida que define qué es posible y qué no para ese sistema humano de conversaciones.</p>
+        <ul class="pilar-lista">
+          <li><strong>Alineación de propósito</strong>El "para qué" de la organización. Conectamos los valores personales con la misión de la empresa.</li>
+          <li><strong>Gestión del compromiso</strong>El sentido de un proyecto nace de los compromisos que los miembros del equipo asumen entre sí.</li>
+          <li><strong>Transformación del observador</strong>Cuestionamos creencias que limitan, abriendo nuevas posibilidades de acción antes invisibles.</li>
+          <li><strong>Cultura de confianza</strong>Sin este sentido de seguridad, la comunicación se bloquea y los objetivos se vuelven inalcanzables.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <section id="sobre">
   <div class="sobre-image reveal">
     <img src="sobre mi.png" alt="Javier Eduardo Gutiérrez" />
@@ -273,7 +331,7 @@
   <div class="servicios-header reveal">
     <div>
       <div class="section-label">Servicios</div>
-      <h2 class="section-title">Lo que<br>hacemos<br>juntos</h2>
+      <h2 class="section-title" style="white-space:nowrap;">Lo que hacemos juntos</h2>
     </div>
     <p class="servicios-desc">Cada proceso es único. Diseñamos intervenciones a medida, con metodología probada y foco en impacto real.</p>
   </div>
@@ -318,7 +376,7 @@
     <p class="contacto-bajada">Si tenés una pregunta, un proyecto en mente, o simplemente querés conocer cómo puedo ayudarte, escribime.</p>
     <div class="contacto-dato">
       <span class="contacto-dato-label">Email</span>
-      <span class="contacto-dato-val">hola@itacaconsultora.com</span>
+      <span class="contacto-dato-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7b1314171a3b120f1a181a181415080e170f14091a55181416">[email&#160;protected]</a></span>
     </div>
     <div class="contacto-dato">
       <span class="contacto-dato-label">Ubicación</span>
@@ -376,7 +434,7 @@
   </ul>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
 
@@ -394,11 +452,4 @@
     btn.textContent = '¡Mensaje enviado! ✓';
     btn.style.background = '#1a5c2a';
     setTimeout(() => {
-      btn.innerHTML = 'Enviar mensaje <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>';
-      btn.style.background = '';
-      e.target.reset();
-    }, 3000);
-  }
-</script>
-</body>
-</html>
+      btn.innerHTML = 'Enviar mensaje <svg width="13" height="13" viewBox="0 0 24 24" f
