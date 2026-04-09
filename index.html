@@ -27,15 +27,15 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 1.2rem 4rem;
-      background: rgba(247,247,247,0.95); backdrop-filter: blur(12px);
+      background: var(--ink); backdrop-filter: blur(12px);
       border-bottom: 1px solid transparent; transition: border-color 0.3s;
     }
-    nav.scrolled { border-color: var(--border); }
-    .nav-logo { font-size: 1.1rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
-    .nav-logo span { color: var(--ink-light); font-weight: 300; font-size: 0.8rem; letter-spacing: 0.12em; margin-left: 0.4rem; }
+    nav.scrolled { border-color: rgba(255,255,255,0.1); }
+    .nav-logo { font-size: 1.1rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--white); text-decoration: none; }
+    .nav-logo span { color: rgba(255,255,255,0.45); font-weight: 300; font-size: 0.8rem; letter-spacing: 0.12em; margin-left: 0.4rem; }
     .nav-links { display: flex; gap: 2.2rem; list-style: none; }
-    .nav-links a { font-size: 0.74rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--ink); }
+    .nav-links a { font-size: 0.74rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
 
     /* HERO */
     #inicio { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 4.5rem; }
@@ -268,45 +268,42 @@
   <div class="pilares-grid">
 
     <div class="pilar-card reveal">
-      <div class="pilar-num">01</div>
       <div class="pilar-titulo">Arquitectura</div>
       <div class="pilar-texto">
         <p class="pilar-preview">No existe un organigrama que podamos replicar y que nos asegure un buen funcionamiento. Tampoco una receta mágica que integre la estructura con las conversaciones estratégicas, tácticas y operativas.</p>
-        <div class="pilar-extra">
+        <div class="pilar-extra" id="extra-1">
           <p>Las empresas son una red de conversaciones que se van generando a sí mismas, el saber y el liderazgo integrándose.</p>
           <p>Desde Ítaca te ayudamos a organizar el mejor diseño posible sin perder de vista el momento —emociones y querencias— que se encuentran tanto dueños de negocios como sus líderes.</p>
           <p>Funcionamiento y formalización del Directorio, organización de reuniones con Gerencias, armado de planes de negocios, seguimientos, identificación de puestos y colaboradores clave: son parte de la contribución que podemos aportar. En Ítaca importa el camino.</p>
         </div>
       </div>
-      <button class="pilar-toggle" onclick="togglePilar(this)">
+      <button class="pilar-toggle" id="btn-1" onclick="togglePilar('1')">
         Seguir leyendo
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
       </button>
     </div>
 
     <div class="pilar-card reveal">
-      <div class="pilar-num">02</div>
       <div class="pilar-titulo">Vigencia</div>
       <div class="pilar-texto">
         <p class="pilar-preview">Quien forma o formó parte de una empresa familiar sabe que existe una fuerza que puede multiplicar los esfuerzos y que el sentido de pertenencia muchas veces se aglutina.</p>
-        <div class="pilar-extra">
+        <div class="pilar-extra" id="extra-2">
           <p>Trascender y dejar un legado tiene mucho sentido en la mayoría de estas organizaciones.</p>
           <p>¿Cómo desarrollo mi empresa y a la par preparo la transición a las siguientes generaciones? ¿Cómo doy lugar a los liderazgos que emergen y cuido el valor construido? ¿Cómo nos organizamos para las conversaciones difíciles, el protocolo familiar y el acceso a la gestión?</p>
           <p>Desde Ítaca buscamos potenciar todo lo bueno del hoy y despejar los miedos que puede traer el mañana. Somos Ítaca, nos importa el camino.</p>
         </div>
       </div>
-      <button class="pilar-toggle" onclick="togglePilar(this)">
+      <button class="pilar-toggle" id="btn-2" onclick="togglePilar('2')">
         Seguir leyendo
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
       </button>
     </div>
 
     <div class="pilar-card reveal">
-      <div class="pilar-num">03</div>
       <div class="pilar-titulo">Sentido</div>
       <div class="pilar-texto">
         <p class="pilar-preview">En las empresas, el sentido es la base de la cultura organizacional: la narrativa compartida que define qué es posible y qué no para ese sistema humano de conversaciones.</p>
-        <div class="pilar-extra">
+        <div class="pilar-extra" id="extra-3">
           <ul class="pilar-lista">
             <li><strong>Alineación de propósito</strong>El "para qué" de la organización. Conectamos los valores personales con la misión de la empresa.</li>
             <li><strong>Gestión del compromiso</strong>El sentido de un proyecto nace de los compromisos que los miembros del equipo asumen entre sí.</li>
@@ -315,7 +312,7 @@
           </ul>
         </div>
       </div>
-      <button class="pilar-toggle" onclick="togglePilar(this)">
+      <button class="pilar-toggle" id="btn-3" onclick="togglePilar('3')">
         Seguir leyendo
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
       </button>
@@ -489,9 +486,10 @@
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   }
 
-  function togglePilar(btn) {
-    const extra = btn.previousElementSibling.querySelector('.pilar-extra');
-    const isOpen = extra.classList.toggle('open');
+  function togglePilar(id) {
+    var extra = document.getElementById('extra-' + id);
+    var btn = document.getElementById('btn-' + id);
+    var isOpen = extra.classList.toggle('open');
     btn.classList.toggle('open', isOpen);
     btn.innerHTML = isOpen
       ? 'Cerrar <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18,15 12,9 6,15"/></svg>'
