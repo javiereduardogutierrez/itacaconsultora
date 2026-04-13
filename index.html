@@ -89,12 +89,13 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       padding-top: 4.5rem;
+      align-items: stretch;
     }
 
     .hero-left {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       padding: 5rem 4rem 5rem 6rem;
     }
 
@@ -177,12 +178,19 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding: 5rem 6rem 5rem 0;
     }
 
     .hero-right-bg {
-      position: absolute;
-      inset: 0;
+      display: none;
+    }
+
+    .hero-right-inner {
+      position: relative;
+      z-index: 1;
+      padding: 5rem 4rem;
       background: radial-gradient(ellipse at 70% 30%, #0d4585 0%, #0a366b 60%, #071f40 100%);
+      overflow: hidden;
     }
 
     .hero-watermark {
@@ -203,11 +211,6 @@
       z-index: 0;
     }
 
-    .hero-right-inner {
-      position: relative;
-      z-index: 1;
-      padding: 5rem 4rem;
-    }
 
     .hero-stat-grid {
       display: grid;
@@ -895,8 +898,8 @@
 
   <div class="hero-right">
     <div class="hero-right-bg"></div>
-    <div class="hero-watermark">ÍTACA</div>
     <div class="hero-right-inner">
+      <div class="hero-watermark">ÍTACA</div>
       <div class="hero-stat-grid">
         <div class="stat-card"><div class="stat-number">10+</div><div class="stat-label">Años de experiencia</div></div>
         <div class="stat-card"><div class="stat-number">50+</div><div class="stat-label">Proyectos realizados</div></div>
