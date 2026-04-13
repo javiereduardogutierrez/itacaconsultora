@@ -19,7 +19,7 @@
       --sans: 'DM Sans', sans-serif;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 18px; }
     body {
       background: var(--bg);
       color: var(--ink);
@@ -119,7 +119,7 @@
 
     .hero-title {
       font-family: var(--serif);
-      font-size: clamp(3rem, 4.5vw, 5rem);
+      font-size: clamp(48px, 4.5vw, 80px);
       font-weight: 300;
       line-height: 1.08;
       margin-bottom: 1.2rem;
@@ -319,11 +319,21 @@
     .pilar-preview { display: block; }
 
     .pilar-extra {
-      display: none;
-      margin-top: 0.9rem;
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.45s ease;
+      margin-top: 0;
+      overflow: hidden;
     }
 
-    .pilar-extra.open { display: block; }
+    .pilar-extra > * {
+      overflow: hidden;
+    }
+
+    .pilar-extra.open {
+      grid-template-rows: 1fr;
+      margin-top: 0.9rem;
+    }
 
     .pilar-toggle {
       display: inline-flex;
@@ -864,7 +874,7 @@
   <a class="nav-logo" href="#inicio">ÍTACA<span>Consultoría & Coaching</span></a>
   <ul class="nav-links">
     <li><a href="#sobre">Sobre mí</a></li>
-    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#servicios">Áreas de acompañamiento</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
 </nav>
@@ -873,7 +883,6 @@
   <div class="hero-left">
     <div class="hero-eyebrow">Consultoría & Coaching</div>
     <h1 class="hero-title">Claridad<br>para <em>transformar</em><br>organizaciones</h1>
-    <p class="hero-tagline">Arquitectura, vigencia y sentido<br>para organizaciones.</p>
     <p class="hero-desc">Acompañamos a líderes y equipos en procesos de cambio real, con foco en las personas y en resultados que perduran.</p>
     <a href="#contacto" class="hero-cta">
       Conversemos
@@ -917,11 +926,11 @@
       <div class="pilar-titulo">Arquitectura</div>
       <div class="pilar-texto">
         <p class="pilar-preview">No existe un organigrama que podamos replicar y que nos asegure un buen funcionamiento. Tampoco una receta mágica que integre la estructura con las conversaciones estratégicas, tácticas y operativas.</p>
-        <div class="pilar-extra" id="extra-1">
+        <div class="pilar-extra" id="extra-1"><div>
           <p>Las empresas son una red de conversaciones que se van generando a sí mismas, el saber y el liderazgo integrándose.</p>
           <p>Desde Ítaca te ayudamos a organizar el mejor diseño posible sin perder de vista el momento —emociones y querencias— que se encuentran tanto dueños de negocios como sus líderes.</p>
           <p>Funcionamiento y formalización del Directorio, organización de reuniones con Gerencias, armado de planes de negocios, seguimientos, identificación de puestos y colaboradores clave: son parte de la contribución que podemos aportar. En Ítaca importa el camino.</p>
-        </div>
+        </div></div>
       </div>
       <button class="pilar-toggle" id="btn-1" onclick="togglePilar('1')">
         Seguir leyendo
@@ -935,11 +944,11 @@
       <div class="pilar-titulo">Vigencia</div>
       <div class="pilar-texto">
         <p class="pilar-preview">Quien forma o formó parte de una empresa familiar sabe que existe una fuerza que puede multiplicar los esfuerzos y que el sentido de pertenencia muchas veces se aglutina.</p>
-        <div class="pilar-extra" id="extra-2">
+        <div class="pilar-extra" id="extra-2"><div>
           <p>Trascender y dejar un legado tiene mucho sentido en la mayoría de estas organizaciones.</p>
           <p>¿Cómo desarrollo mi empresa y a la par preparo la transición a las siguientes generaciones? ¿Cómo doy lugar a los liderazgos que emergen y cuido el valor construido? ¿Cómo nos organizamos para las conversaciones difíciles, el protocolo familiar y el acceso a la gestión?</p>
           <p>Desde Ítaca buscamos potenciar todo lo bueno del hoy y despejar los miedos que puede traer el mañana. Somos Ítaca, nos importa el camino.</p>
-        </div>
+        </div></div>
       </div>
       <button class="pilar-toggle" id="btn-2" onclick="togglePilar('2')">
         Seguir leyendo
@@ -953,14 +962,14 @@
       <div class="pilar-titulo">Sentido</div>
       <div class="pilar-texto">
         <p class="pilar-preview">En las empresas, el sentido es la base de la cultura organizacional: la narrativa compartida que define qué es posible y qué no para ese sistema humano de conversaciones.</p>
-        <div class="pilar-extra" id="extra-3">
+        <div class="pilar-extra" id="extra-3"><div>
           <ul class="pilar-lista">
             <li><strong>Alineación de propósito</strong>El "para qué" de la organización. Conectamos los valores personales con la misión de la empresa.</li>
             <li><strong>Gestión del compromiso</strong>El sentido de un proyecto nace de los compromisos que los miembros del equipo asumen entre sí.</li>
             <li><strong>Transformación del observador</strong>Cuestionamos creencias que limitan, abriendo nuevas posibilidades de acción antes invisibles.</li>
             <li><strong>Cultura de confianza</strong>Sin este sentido de seguridad, la comunicación se bloquea y los objetivos se vuelven inalcanzables.</li>
           </ul>
-        </div>
+        </div></div>
       </div>
       <button class="pilar-toggle" id="btn-3" onclick="togglePilar('3')">
         Seguir leyendo
@@ -1020,10 +1029,10 @@
 <section id="servicios">
   <div class="servicios-header reveal">
     <div>
-      <div class="section-label">Servicios</div>
+      <div class="section-label">Áreas de acompañamiento</div>
       <h2 class="section-title" style="white-space:nowrap;">Lo que hacemos juntos</h2>
+      <p class="servicios-desc">Cada proceso es único. Diseñamos intervenciones a medida, con metodología probada y foco en impacto real.</p>
     </div>
-    <p class="servicios-desc">Cada proceso es único. Diseñamos intervenciones a medida, con metodología probada y foco en impacto real.</p>
   </div>
 
   <div class="servicios-grid reveal">
@@ -1147,7 +1156,7 @@
   <p>© 2025 Ítaca · Javier Eduardo Gutiérrez</p>
   <ul class="footer-links">
     <li><a href="#sobre">Sobre mí</a></li>
-    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#servicios">Áreas de acompañamiento</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
 </footer>
