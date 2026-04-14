@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -196,13 +197,13 @@
     .hero-watermark {
       position: absolute;
       left: 50%;
-      transform: translateX(-50%);
-      bottom: -2rem;
+      top: 50%;
+      transform: translate(-50%, -50%);
       font-family: var(--sans);
-      font-size: clamp(6rem, 15vw, 13rem);
+      font-size: clamp(3.5rem, 10vw, 8rem);
       font-weight: 700;
-      color: rgba(255, 255, 255, 0.04);
-      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.06);
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       line-height: 1;
       pointer-events: none;
@@ -837,9 +838,15 @@
     @media (max-width: 960px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
-      #inicio { grid-template-columns: 1fr; }
-      .hero-left { padding: 5rem 1.5rem 3rem; }
-      .hero-right { min-height: 45vh; }
+      #inicio { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 5rem 1.5rem 2.5rem; }
+      .hero-right {
+        padding: 0 1.5rem 3rem;
+        min-height: auto;
+      }
+      .hero-right-inner {
+        padding: 3rem 2rem;
+      }
       section { padding: 4rem 1.5rem; }
       #frase { padding: 4rem 1.5rem; }
       #sobre, #contacto { grid-template-columns: 1fr; gap: 3rem; }
@@ -847,10 +854,19 @@
       .servicios-header { flex-direction: column; align-items: flex-start; }
       .form-row { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .pilares-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     }
 
     @media (max-width: 600px) {
       .servicios-grid { grid-template-columns: 1fr; }
+      .hero-left { padding: 4rem 1.2rem 2rem; }
+      .hero-right { padding: 0 1.2rem 2.5rem; }
+      .hero-right-inner { padding: 2.5rem 1.5rem; }
+      .hero-stat-grid { grid-template-columns: 1fr 1fr; }
+      section { padding: 3rem 1.2rem; }
+      #frase { padding: 3rem 1.2rem; }
+      footer { padding: 2rem 1.2rem; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
     }
 
     /* REVEAL */
@@ -994,17 +1010,18 @@
   <div class="sobre-content reveal">
     <div class="section-label">Sobre mí</div>
     <h2 class="section-title">Soy Javier<br><em style="font-style:italic;color:var(--ink-light)">Eduardo Gutiérrez</em></h2>
-    <p class="lead">Consultor y coach especializado en desarrollo organizacional, con foco en transformar la manera en que las personas trabajan juntas.</p>
-    <p>Fundé Ítaca con la convicción de que las organizaciones necesitan más que estrategia: necesitan sentido. Mi trabajo es ayudar a líderes y equipos a encontrar claridad, construir estructuras que funcionen y sostener el cambio en el tiempo.</p>
-    <p>A lo largo de mi trayectoria acompañé procesos en organizaciones de distintos tamaños y sectores, siempre con un enfoque que combina el rigor metodológico con una mirada profundamente humana.</p>
+    <p class="lead">Consultor de Empresas enfocado en el Gobierno Corporativo, luego de más de 2 décadas en posiciones de mayor responsabilidad, fundé Ítaca con la convicción de que las organizaciones necesitan algo más que estrategia: necesitan <em style="font-style:italic">sentido</em>.</p>
+    <p>Mi vocación es ayudar a líderes y equipos a encontrar claridad, construir estructuras que funcionen y sostener el cambio en el tiempo.</p>
+    <p>Me especializo en provocar y conducir las conversaciones críticas en la alta dirección para formalizar una gobernanza real. No solo contribuyo a diseñar procesos; facilito los acuerdos necesarios para que el directorio y la gerencia operen bajo un marco de orden, confianza y reglas claras. Poseo gran experiencia en Empresas Familiares de segunda y tercera generación.</p>
+    <p>Soy Licenciado en <em style="font-style:italic">RR.HH</em> (USAL), tengo un posgrado en negocios (UB) y cuento con certificación como Director Profesional (IGEP). En este último tiempo me formé como coach ontológico (Amans) — una experiencia que transformó mi vivir. Soy un hombre de negocios con una mirada profundamente humana.</p>
 
     <div class="sobre-tags">
-      <span class="tag">Consultoría</span>
-      <span class="tag">Coaching</span>
-      <span class="tag">Liderazgo</span>
-      <span class="tag">Gestión del cambio</span>
-      <span class="tag">Cultura organizacional</span>
-      <span class="tag">Estrategia</span>
+      <span class="tag">Gobierno Corporativo</span>
+      <span class="tag">Empresas Familiares</span>
+      <span class="tag">Coaching Ontológico</span>
+      <span class="tag">Alta Dirección</span>
+      <span class="tag">Gestión del Cambio</span>
+      <span class="tag">Dirección Profesional</span>
     </div>
   </div>
 </section>
