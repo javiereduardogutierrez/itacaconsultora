@@ -19,7 +19,12 @@
       --sans: 'DM Sans', sans-serif;
     }
 
-    html { scroll-behavior: smooth; font-size: 18px; }
+    html {
+      scroll-behavior: smooth;
+      font-size: 18px;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
     body {
       background: var(--bg);
       color: var(--ink);
@@ -27,6 +32,7 @@
       font-weight: 300;
       line-height: 1.7;
       overflow-x: hidden;
+      max-width: 100%;
     }
 
     /* NAV */
@@ -191,6 +197,8 @@
       padding: 5rem 4rem;
       background: radial-gradient(ellipse at 70% 30%, #0d4585 0%, #0a366b 60%, #071f40 100%);
       overflow: hidden;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .hero-watermark {
@@ -209,6 +217,8 @@
       user-select: none;
       white-space: nowrap;
       z-index: 0;
+      max-width: 100%;
+      overflow: hidden;
     }
 
 
@@ -842,9 +852,13 @@
       .hero-right {
         padding: 0 1.5rem 3rem;
         min-height: auto;
+        width: 100%;
+        box-sizing: border-box;
       }
       .hero-right-inner {
         padding: 3rem 2rem;
+        width: 100%;
+        box-sizing: border-box;
       }
       section { padding: 4rem 1.5rem; }
       #frase { padding: 4rem 1.5rem; }
@@ -1032,17 +1046,17 @@
   </div>
 
   <div class="video-wrapper reveal">
-    <div class="video-placeholder">
-      <div class="video-play-btn">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-          <polygon points="5,3 19,12 5,21"/>
-        </svg>
-      </div>
-      <p class="video-caption">Tu video de presentación irá aquí</p>
-    </div>
+    <!-- YOUTUBE: reemplazá "VIDEO_ID" por el ID de tu video de YouTube -->
+    <!-- Ejemplo: si tu URL es https://www.youtube.com/watch?v=dQw4w9WgXcQ, el ID es dQw4w9WgXcQ -->
+    <iframe
+      src="https://www.youtube.com/embed/VIDEO_ID"
+      title="Ítaca — Consultoría & Coaching"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
   </div>
 
-  <p class="video-hint reveal">Podés usar YouTube, Vimeo o un video propio</p>
+  <p class="video-hint reveal">Presentación en video</p>
 </section>
 
 <section id="servicios">
@@ -1124,7 +1138,7 @@
   </div>
 
   <div class="reveal">
-    <form class="contact-form" action="https://formspree.io/Drugstores50mas@gmail.com" method="POST" onsubmit="handleSubmit(event)">
+    <form class="contact-form" id="contact-form" action="https://formspree.io/f/xpwzgqjb" method="POST">
       <input type="hidden" name="_subject" value="Nueva consulta desde Ítaca" />
       <input type="hidden" name="_next" value="" />
 
