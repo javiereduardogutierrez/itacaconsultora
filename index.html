@@ -553,66 +553,134 @@
 
     .video-header { margin-bottom: 3rem; }
 
-    .video-wrapper {
-      position: relative;
-      max-width: 860px;
-      margin: 0 auto;
-      background: var(--ink);
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
     }
 
-    .video-wrapper iframe,
-    .video-wrapper video {
+    .video-item {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      cursor: pointer;
+    }
+
+    .video-item:hover .video-thumb-overlay {
+      opacity: 1;
+    }
+
+    .video-item-frame {
+      position: relative;
+      background: var(--ink);
+      width: 100%;
+    }
+
+    .video-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 54, 107, 0.55);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .video-play-circle {
+      width: 60px;
+      height: 60px;
+      border: 2px solid rgba(255,255,255,0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 3px;
+    }
+
+    .video-item-frame iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: block;
+      border: none;
+      pointer-events: none;
+    }
+
+    .video-item-title {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ink-light);
+      line-height: 1.3;
+      padding-top: 0.2rem;
+    }
+
+    /* VIDEO EXPANDED LIGHTBOX */
+    .video-expanded {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(7, 31, 64, 0.88);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .video-expanded.open {
+      display: flex;
+    }
+
+    .video-expanded-inner {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .video-expanded-inner iframe {
       width: 100%;
       aspect-ratio: 16/9;
       display: block;
       border: none;
     }
 
-    .video-placeholder {
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: linear-gradient(135deg, #0a366b, #071f40);
+    .video-expanded-title {
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      margin-top: 1rem;
+      letter-spacing: 0.06em;
+    }
+
+    .video-expanded-close {
+      position: absolute;
+      top: -2.8rem;
+      right: 0;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.7);
+      width: 36px;
+      height: 36px;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
       cursor: pointer;
-      transition: opacity 0.2s;
+      transition: border-color 0.2s, color 0.2s;
     }
 
-    .video-placeholder:hover { opacity: 0.9; }
-
-    .video-play-btn {
-      width: 72px;
-      height: 72px;
-      border: 2px solid rgba(255,255,255,0.35);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: border-color 0.2s, transform 0.2s;
+    .video-expanded-close:hover {
+      border-color: rgba(255,255,255,0.7);
+      color: var(--white);
     }
 
-    .video-placeholder:hover .video-play-btn {
-      border-color: rgba(255,255,255,0.8);
-      transform: scale(1.08);
-    }
-
-    .video-caption {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.35);
-    }
-
-    .video-hint {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      margin-top: 1.5rem;
-      text-align: center;
+    @media (max-width: 900px) {
+      .videos-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
     }
 
     /* SERVICIOS */
@@ -906,6 +974,7 @@
   <a class="nav-logo" href="#inicio">ÍTACA<span>Consultoría & Coaching</span></a>
   <ul class="nav-links">
     <li><a href="#sobre">Sobre mí</a></li>
+    <li><a href="#video">Videos</a></li>
     <li><a href="#servicios">Áreas de acompañamiento</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
@@ -1041,16 +1110,71 @@
 
 <section id="video">
   <div class="video-header reveal">
-    <div class="section-label">Video</div>
+    <div class="section-label">Videos</div>
     <h2 class="section-title">Conocé<br>la propuesta</h2>
   </div>
 
-  <div class="video-wrapper reveal">
-    <iframe
-      src="https://drive.google.com/file/d/1-5thdr1oXkgnts5zDfcrt3vUe9rVnZ8K/preview"
-      allow="autoplay"
-      allowfullscreen>
-    </iframe>
+  <div class="videos-grid reveal">
+    <div class="video-item" onclick="openVideo('https://drive.google.com/file/d/1-5thdr1oXkgnts5zDfcrt3vUe9rVnZ8K/preview', 'La propuesta de Ítaca')">
+      <div class="video-item-frame">
+        <div class="video-thumb-overlay">
+          <div class="video-play-circle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <iframe
+          src="https://drive.google.com/file/d/1-5thdr1oXkgnts5zDfcrt3vUe9rVnZ8K/preview"
+          allow="autoplay"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-item-title">La propuesta de Ítaca</div>
+    </div>
+
+    <div class="video-item" onclick="openVideo('https://drive.google.com/file/d/1rqM2tcsYl5wPIWcXcfT2SbLqwX2_Khup/preview', 'Mi formación y experiencia')">
+      <div class="video-item-frame">
+        <div class="video-thumb-overlay">
+          <div class="video-play-circle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <iframe
+          src="https://drive.google.com/file/d/1rqM2tcsYl5wPIWcXcfT2SbLqwX2_Khup/preview"
+          allow="autoplay"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-item-title">Mi formación y experiencia</div>
+    </div>
+
+    <div class="video-item" onclick="openVideo('https://drive.google.com/file/d/1rqM2tcsYl5wPIWcXcfT2SbLqwX2_Khup/preview', 'Declaración del NO')">
+      <div class="video-item-frame">
+        <div class="video-thumb-overlay">
+          <div class="video-play-circle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <iframe
+          src="https://drive.google.com/file/d/1rqM2tcsYl5wPIWcXcfT2SbLqwX2_Khup/preview"
+          allow="autoplay"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-item-title">Declaración del NO</div>
+    </div>
+  </div>
+
+  <!-- Expanded video lightbox -->
+  <div class="video-expanded" id="video-expanded" onclick="closeVideo()">
+    <div class="video-expanded-inner" onclick="event.stopPropagation()">
+      <button class="video-expanded-close" onclick="closeVideo()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <iframe id="video-expanded-iframe" src="" allow="autoplay" allowfullscreen></iframe>
+      <div class="video-expanded-title" id="video-expanded-title"></div>
+    </div>
   </div>
 </section>
 
@@ -1211,6 +1335,23 @@
 
     document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
   }
+
+  function openVideo(src, title) {
+    document.getElementById('video-expanded-iframe').src = src + '&autoplay=1';
+    document.getElementById('video-expanded-title').textContent = title;
+    document.getElementById('video-expanded').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeVideo() {
+    document.getElementById('video-expanded').classList.remove('open');
+    document.getElementById('video-expanded-iframe').src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeVideo();
+  });
 
   function togglePilar(id) {
     const extra = document.getElementById('extra-' + id);
