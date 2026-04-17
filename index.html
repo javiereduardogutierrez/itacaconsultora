@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -1117,7 +1116,7 @@
   </div>
 
   <div class="videos-grid reveal">
-    <div class="video-item" onclick="openVideo('https://drive.google.com/file/d/1-5thdr1oXkgnts5zDfcrt3vUe9rVnZ8K/preview', 'La propuesta de Ítaca')">
+    <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/edVz7FV_d88', '¿Por qué Ítaca?')">
       <div class="video-item-frame">
         <div class="video-thumb-overlay">
           <div class="video-play-circle">
@@ -1125,15 +1124,15 @@
           </div>
         </div>
         <iframe
-          src="https://drive.google.com/file/d/1-5thdr1oXkgnts5zDfcrt3vUe9rVnZ8K/preview"
+          src="https://www.youtube.com/embed/edVz7FV_d88"
           allow="autoplay"
           allowfullscreen>
         </iframe>
       </div>
-      <div class="video-item-title">La propuesta de Ítaca</div>
+      <div class="video-item-title">¿Por qué Ítaca?</div>
     </div>
 
-    <div class="video-item" onclick="openVideo('https://drive.google.com/file/d/1rqM2tcsYl5wPIWcXcfT2SbLqwX2_Khup/preview', 'Mi formación y experiencia')">
+    <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/RVq5O60C3sE', 'La propuesta')">
       <div class="video-item-frame">
         <div class="video-thumb-overlay">
           <div class="video-play-circle">
@@ -1141,15 +1140,15 @@
           </div>
         </div>
         <iframe
-          src="https://drive.google.com/file/d/1rqM2tcsYl5wPIWcXcfT2SbLqwX2_Khup/preview"
+          src="https://www.youtube.com/embed/RVq5O60C3sE"
           allow="autoplay"
           allowfullscreen>
         </iframe>
       </div>
-      <div class="video-item-title">Mi formación y experiencia</div>
+      <div class="video-item-title">La propuesta</div>
     </div>
 
-    <div class="video-item" onclick="openVideo('https://drive.google.com/file/d/1rqM2tcsYl5wPIWcXcfT2SbLqwX2_Khup/preview', 'Declaración del NO')">
+    <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/pgDXpaH-E5Y', 'Mi camino profesional')">
       <div class="video-item-frame">
         <div class="video-thumb-overlay">
           <div class="video-play-circle">
@@ -1157,12 +1156,12 @@
           </div>
         </div>
         <iframe
-          src="https://drive.google.com/file/d/1rqM2tcsYl5wPIWcXcfT2SbLqwX2_Khup/preview"
+          src="https://www.youtube.com/embed/pgDXpaH-E5Y"
           allow="autoplay"
           allowfullscreen>
         </iframe>
       </div>
-      <div class="video-item-title">Declaración del NO</div>
+      <div class="video-item-title">Mi camino profesional</div>
     </div>
   </div>
 
@@ -1339,7 +1338,7 @@
   }
 
   function openVideo(src, title) {
-    document.getElementById('video-expanded-iframe').src = src + '&autoplay=1';
+    document.getElementById('video-expanded-iframe').src = src + '?autoplay=1';
     document.getElementById('video-expanded-title').textContent = title;
     document.getElementById('video-expanded').classList.add('open');
     document.body.style.overflow = 'hidden';
