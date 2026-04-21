@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -716,14 +717,14 @@
 
     .servicios-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 1px;
       background: rgba(255,255,255,0.06);
     }
 
     .servicio-card {
       background: var(--ink);
-      padding: 2.5rem;
+      padding: 1.8rem;
       transition: background 0.3s;
       border: 1px solid rgba(255,255,255,0.04);
     }
@@ -736,7 +737,7 @@
       font-weight: 300;
       color: rgba(255,255,255,0.1);
       line-height: 1;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.8rem;
       transition: color 0.3s;
     }
 
@@ -1083,10 +1084,10 @@
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-links">
-    <li><a href="#pilares" onclick="closeMenu()">Propuesta</a></li>
     <li><a href="#sobre" onclick="closeMenu()">Sobre mí</a></li>
-    <li><a href="#servicios" onclick="closeMenu()">Áreas de acompañamiento</a></li>
+    <li><a href="#pilares" onclick="closeMenu()">Propuesta</a></li>
     <li><a href="#video" onclick="closeMenu()">Videos</a></li>
+    <li><a href="#servicios" onclick="closeMenu()">Áreas de acompañamiento</a></li>
     <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
   </ul>
 </nav>
@@ -1119,6 +1120,33 @@
     <p class="frase-sub">Javier Eduardo Gutiérrez — Fundador</p>
   </div>
 </div>
+
+<section id="sobre">
+  <div class="sobre-image reveal">
+    <img src="sobre mi.png" alt="Javier Eduardo Gutiérrez" />
+    <div class="sobre-image-frame"></div>
+  </div>
+
+  <div class="sobre-content reveal">
+    <div class="section-label">Sobre mí</div>
+    <h2 class="section-title">Soy Javier<br><em style="font-style:italic;color:var(--ink-light)">Eduardo Gutiérrez</em></h2>
+    <p class="lead">Consultor de Empresas enfocado en el Gobierno Corporativo, luego de más de 2 décadas en posiciones de mayor responsabilidad, fundé Ítaca con la convicción de que las organizaciones necesitan algo más que estrategia: necesitan <em style="font-style:italic">sentido</em>.</p>
+    <p>Mi vocación es ayudar a líderes y equipos a encontrar claridad, construir estructuras que funcionen y sostener el cambio en el tiempo.</p>
+    <p>Me especializo en <strong style="font-weight:500;color:var(--ink)">provocar y conducir las conversaciones críticas</strong> en la alta dirección para formalizar una gobernanza real. No solo contribuyo a diseñar procesos; facilito los acuerdos necesarios para que el directorio y la gerencia operen bajo un marco de orden, confianza y reglas claras. Poseo gran experiencia en Empresas Familiares de segunda y tercera generación.</p>
+    <p>Soy Licenciado en <em style="font-style:italic">RR.HH</em> (USAL), tengo un posgrado en negocios (UB) y cuento con certificación como Director Profesional (IGEP). En este último tiempo me formé como coach ontológico (Amans) — una experiencia que transformó mi vivir. Soy un hombre de negocios con una mirada profundamente humana.</p>
+
+    <div class="sobre-tags">
+      <span class="tag">Gobierno Corporativo</span>
+      <span class="tag">Empresas Familiares</span>
+      <span class="tag">Coaching Ontológico</span>
+      <span class="tag">Alta Dirección</span>
+      <span class="tag">Gestión del Cambio</span>
+      <span class="tag">Dirección Profesional</span>
+      <span class="tag">Liderazgo</span>
+      <span class="tag">Empresas Conscientes</span>
+    </div>
+  </div>
+</section>
 
 <section id="pilares">
   <div class="reveal">
@@ -1188,88 +1216,6 @@
   </div>
 </section>
 
-<section id="sobre">
-  <div class="sobre-image reveal">
-    <img src="sobre mi.png" alt="Javier Eduardo Gutiérrez" />
-    <div class="sobre-image-frame"></div>
-  </div>
-
-  <div class="sobre-content reveal">
-    <div class="section-label">Sobre mí</div>
-    <h2 class="section-title">Soy Javier<br><em style="font-style:italic;color:var(--ink-light)">Eduardo Gutiérrez</em></h2>
-    <p class="lead">Consultor de Empresas enfocado en el Gobierno Corporativo, luego de más de 2 décadas en posiciones de mayor responsabilidad, fundé Ítaca con la convicción de que las organizaciones necesitan algo más que estrategia: necesitan <em style="font-style:italic">sentido</em>.</p>
-    <p>Mi vocación es ayudar a líderes y equipos a encontrar claridad, construir estructuras que funcionen y sostener el cambio en el tiempo.</p>
-    <p>Me especializo en <strong style="font-weight:500;color:var(--ink)">provocar y conducir las conversaciones críticas</strong> en la alta dirección para formalizar una gobernanza real. No solo contribuyo a diseñar procesos; facilito los acuerdos necesarios para que el directorio y la gerencia operen bajo un marco de orden, confianza y reglas claras. Poseo gran experiencia en Empresas Familiares de segunda y tercera generación.</p>
-    <p>Soy Licenciado en <em style="font-style:italic">RR.HH</em> (USAL), tengo un posgrado en negocios (UB) y cuento con certificación como Director Profesional (IGEP). En este último tiempo me formé como coach ontológico (Amans) — una experiencia que transformó mi vivir. Soy un hombre de negocios con una mirada profundamente humana.</p>
-
-    <div class="sobre-tags">
-      <span class="tag">Gobierno Corporativo</span>
-      <span class="tag">Empresas Familiares</span>
-      <span class="tag">Coaching Ontológico</span>
-      <span class="tag">Alta Dirección</span>
-      <span class="tag">Gestión del Cambio</span>
-      <span class="tag">Dirección Profesional</span>
-      <span class="tag">Liderazgo</span>
-      <span class="tag">Empresas Conscientes</span>
-    </div>
-  </div>
-</section>
-
-
-<section id="servicios">
-  <div class="servicios-header reveal">
-    <div>
-      <div class="section-label">Áreas de acompañamiento</div>
-      <h2 class="section-title" style="white-space:nowrap;">Lo que hacemos juntos</h2>
-      <p class="servicios-desc">Cada proceso es único. Diseñamos intervenciones a medida, con metodología probada y foco en impacto real.</p>
-    </div>
-  </div>
-
-  <div class="servicios-grid reveal">
-    <div class="servicio-card">
-      <div class="servicio-num">01</div>
-      <div class="servicio-nombre">Consultoría Estratégica</div>
-      <div class="servicio-desc">Diagnóstico y diseño de estrategias para que tu organización alcance sus objetivos con claridad y sostenibilidad.</div>
-    </div>
-    <div class="servicio-card">
-      <div class="servicio-num">02</div>
-      <div class="servicio-nombre">Desarrollo Organizacional</div>
-      <div class="servicio-desc">Acompañamiento en la construcción de culturas saludables, estructuras funcionales y dinámicas de equipo de alto rendimiento.</div>
-    </div>
-    <div class="servicio-card">
-      <div class="servicio-num">03</div>
-      <div class="servicio-nombre">Gestión del Cambio</div>
-      <div class="servicio-desc">Metodología y acompañamiento para transitar transformaciones organizacionales con el menor impacto posible y el mayor resultado.</div>
-    </div>
-    <div class="servicio-card">
-      <div class="servicio-num">04</div>
-      <div class="servicio-nombre">Diagnóstico Organizacional</div>
-      <div class="servicio-desc">Análisis profundo de la situación actual de tu empresa para identificar oportunidades, bloqueos y focos de mejora.</div>
-    </div>
-    <div class="servicio-card">
-      <div class="servicio-num">05</div>
-      <div class="servicio-nombre">Empresas Familiares</div>
-      <div class="servicio-desc">Te aporto una mirada sistémica de todos los desafíos que tiene por delante la empresa familiar. Gerenciamiento, Raíz, Emociones, Mejor conversar.</div>
-    </div>
-    <div class="servicio-card">
-      <div class="servicio-num">06</div>
-      <div class="servicio-nombre">Formación de Directorios</div>
-      <div class="servicio-desc">Te acompaño en integrar procesos que mejoren el funcionamiento de este órgano de gobierno.</div>
-    </div>
-    <div class="servicio-card">
-      <div class="servicio-num">07</div>
-      <div class="servicio-nombre">Asesoramiento para Nuevos Emprendedores</div>
-      <div class="servicio-desc">Te ayudo a que el crecimiento sea una variable controlada, trabajamos en el análisis de las necesidades futuras.</div>
-    </div>
-    <div class="servicio-card">
-      <div class="servicio-num">08</div>
-      <div class="servicio-nombre">Coaching Ejecutivo</div>
-      <div class="servicio-desc">Sesiones individuales para líderes que buscan potenciar su desempeño, tomar mejores decisiones y crecer profesionalmente.</div>
-    </div>
-  </div>
-</section>
-
-
 <section id="video">
   <div class="video-header reveal">
     <div class="section-label">Videos</div>
@@ -1336,6 +1282,51 @@
       </button>
       <iframe id="video-expanded-iframe" src="" allow="autoplay" allowfullscreen></iframe>
       <div class="video-expanded-title" id="video-expanded-title"></div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="servicios-header reveal">
+    <div>
+      <div class="section-label">Áreas de acompañamiento</div>
+      <h2 class="section-title" style="white-space:nowrap;">Lo que hacemos juntos</h2>
+      <p class="servicios-desc">Cada proceso es único. Diseñamos intervenciones a medida, con metodología probada y foco en impacto real.</p>
+    </div>
+  </div>
+
+  <div class="servicios-grid reveal">
+    <div class="servicio-card">
+      <div class="servicio-num">01</div>
+      <div class="servicio-nombre">Consultoría Estratégica</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">02</div>
+      <div class="servicio-nombre">Desarrollo Organizacional</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">03</div>
+      <div class="servicio-nombre">Gestión del Cambio</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">04</div>
+      <div class="servicio-nombre">Diagnóstico Organizacional</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">05</div>
+      <div class="servicio-nombre">Empresas Familiares</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">06</div>
+      <div class="servicio-nombre">Formación de Directorios</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">07</div>
+      <div class="servicio-nombre">Asesoramiento para Nuevos Emprendedores</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">08</div>
+      <div class="servicio-nombre">Coaching Ejecutivo</div>
     </div>
   </div>
 </section>
