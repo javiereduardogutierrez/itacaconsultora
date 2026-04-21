@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -868,6 +869,46 @@
 
     .form-submit:hover { background: #0d4585; }
 
+    /* WHATSAPP FLOTANTE */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: #25d366;
+      color: white;
+      padding: 0.85rem 1.3rem 0.85rem 1.1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s, padding 0.3s;
+      overflow: hidden;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+    }
+
+    .whatsapp-float-label {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 600px) {
+      .whatsapp-float {
+        padding: 0.9rem;
+        border-radius: 50%;
+      }
+      .whatsapp-float-label { display: none; }
+    }
+
     /* FOOTER */
     footer {
       background: var(--ink);
@@ -987,13 +1028,6 @@
     <div class="hero-eyebrow">Consultoría & Coaching</div>
     <h1 class="hero-title">Claridad<br>para <em>transformar</em><br>organizaciones</h1>
     <p class="hero-desc">Acompañamos a líderes y equipos en procesos de cambio real, con foco en las personas y en resultados que perduran.</p>
-    <a href="#contacto" class="hero-cta">
-      Conversemos
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="5" y1="12" x2="19" y2="12"/>
-        <polyline points="12,5 19,12 12,19"/>
-      </svg>
-    </a>
   </div>
 
   <div class="hero-right">
@@ -1001,10 +1035,10 @@
     <div class="hero-right-inner">
       <div class="hero-watermark">ÍTACA</div>
       <div class="hero-stat-grid">
-        <div class="stat-card"><div class="stat-number">10+</div><div class="stat-label">Años de experiencia</div></div>
+        <div class="stat-card"><div class="stat-number">20+</div><div class="stat-label">Años de experiencia</div></div>
         <div class="stat-card"><div class="stat-number">50+</div><div class="stat-label">Proyectos realizados</div></div>
-        <div class="stat-card"><div class="stat-number">30+</div><div class="stat-label">Clientes activos</div></div>
-        <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Países de alcance</div></div>
+        <div class="stat-card"><div class="stat-number">10</div><div class="stat-label">Profesionales en red</div></div>
+        <div class="stat-card"><div class="stat-number">5</div><div class="stat-label">Países alcanzados</div></div>
       </div>
     </div>
   </div>
@@ -1012,7 +1046,10 @@
 
 <div id="frase">
   <div class="frase-inner reveal">
-    <p class="frase-text">Ítaca: <em>Arquitectura, vigencia y sentido</em><br>para organizaciones.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1.4rem;margin-bottom:1.2rem;">
+      <img src="Logos_Instagram-02.jpg" alt="Ítaca logo" style="width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;"/>
+      <p class="frase-text" style="margin-bottom:0;">Ítaca: <em>Arquitectura, vigencia y sentido</em><br>para organizaciones.</p>
+    </div>
     <p class="frase-sub">Javier Eduardo Gutiérrez — Fundador</p>
   </div>
 </div>
@@ -1106,9 +1143,66 @@
       <span class="tag">Alta Dirección</span>
       <span class="tag">Gestión del Cambio</span>
       <span class="tag">Dirección Profesional</span>
+      <span class="tag">Liderazgo</span>
+      <span class="tag">Empresas Conscientes</span>
     </div>
   </div>
 </section>
+
+
+<section id="servicios">
+  <div class="servicios-header reveal">
+    <div>
+      <div class="section-label">Áreas de acompañamiento</div>
+      <h2 class="section-title" style="white-space:nowrap;">Lo que hacemos juntos</h2>
+      <p class="servicios-desc">Cada proceso es único. Diseñamos intervenciones a medida, con metodología probada y foco en impacto real.</p>
+    </div>
+  </div>
+
+  <div class="servicios-grid reveal">
+    <div class="servicio-card">
+      <div class="servicio-num">01</div>
+      <div class="servicio-nombre">Consultoría Estratégica</div>
+      <div class="servicio-desc">Diagnóstico y diseño de estrategias para que tu organización alcance sus objetivos con claridad y sostenibilidad.</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">02</div>
+      <div class="servicio-nombre">Desarrollo Organizacional</div>
+      <div class="servicio-desc">Acompañamiento en la construcción de culturas saludables, estructuras funcionales y dinámicas de equipo de alto rendimiento.</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">03</div>
+      <div class="servicio-nombre">Gestión del Cambio</div>
+      <div class="servicio-desc">Metodología y acompañamiento para transitar transformaciones organizacionales con el menor impacto posible y el mayor resultado.</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">04</div>
+      <div class="servicio-nombre">Diagnóstico Organizacional</div>
+      <div class="servicio-desc">Análisis profundo de la situación actual de tu empresa para identificar oportunidades, bloqueos y focos de mejora.</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">05</div>
+      <div class="servicio-nombre">Empresas Familiares</div>
+      <div class="servicio-desc">Te aporto una mirada sistémica de todos los desafíos que tiene por delante la empresa familiar. Gerenciamiento, Raíz, Emociones, Mejor conversar.</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">06</div>
+      <div class="servicio-nombre">Formación de Directorios</div>
+      <div class="servicio-desc">Te acompaño en integrar procesos que mejoren el funcionamiento de este órgano de gobierno.</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">07</div>
+      <div class="servicio-nombre">Asesoramiento para Nuevos Emprendedores</div>
+      <div class="servicio-desc">Te ayudo a que el crecimiento sea una variable controlada, trabajamos en el análisis de las necesidades futuras.</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-num">08</div>
+      <div class="servicio-nombre">Coaching Ejecutivo</div>
+      <div class="servicio-desc">Sesiones individuales para líderes que buscan potenciar su desempeño, tomar mejores decisiones y crecer profesionalmente.</div>
+    </div>
+  </div>
+</section>
+
 
 <section id="video">
   <div class="video-header reveal">
@@ -1117,22 +1211,6 @@
   </div>
 
   <div class="videos-grid reveal">
-    <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/edVz7FV_d88', '¿Por qué Ítaca?')">
-      <div class="video-item-frame">
-        <div class="video-thumb-overlay">
-          <div class="video-play-circle">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-        <iframe
-          src="https://www.youtube.com/embed/edVz7FV_d88"
-          allow="autoplay"
-          allowfullscreen>
-        </iframe>
-      </div>
-      <div class="video-item-title">¿Por qué Ítaca?</div>
-    </div>
-
     <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/RVq5O60C3sE', 'La propuesta')">
       <div class="video-item-frame">
         <div class="video-thumb-overlay">
@@ -1196,49 +1274,6 @@
   </div>
 </section>
 
-<section id="servicios">
-  <div class="servicios-header reveal">
-    <div>
-      <div class="section-label">Áreas de acompañamiento</div>
-      <h2 class="section-title" style="white-space:nowrap;">Lo que hacemos juntos</h2>
-      <p class="servicios-desc">Cada proceso es único. Diseñamos intervenciones a medida, con metodología probada y foco en impacto real.</p>
-    </div>
-  </div>
-
-  <div class="servicios-grid reveal">
-    <div class="servicio-card">
-      <div class="servicio-num">01</div>
-      <div class="servicio-nombre">Consultoría Estratégica</div>
-      <div class="servicio-desc">Diagnóstico y diseño de estrategias para que tu organización alcance sus objetivos con claridad y sostenibilidad.</div>
-    </div>
-    <div class="servicio-card">
-      <div class="servicio-num">02</div>
-      <div class="servicio-nombre">Coaching Ejecutivo</div>
-      <div class="servicio-desc">Sesiones individuales para líderes que buscan potenciar su desempeño, tomar mejores decisiones y crecer profesionalmente.</div>
-    </div>
-    <div class="servicio-card">
-      <div class="servicio-num">03</div>
-      <div class="servicio-nombre">Desarrollo Organizacional</div>
-      <div class="servicio-desc">Acompañamiento en la construcción de culturas saludables, estructuras funcionales y dinámicas de equipo de alto rendimiento.</div>
-    </div>
-    <div class="servicio-card">
-      <div class="servicio-num">04</div>
-      <div class="servicio-nombre">Gestión del Cambio</div>
-      <div class="servicio-desc">Metodología y acompañamiento para transitar transformaciones organizacionales con el menor impacto posible y el mayor resultado.</div>
-    </div>
-    <div class="servicio-card">
-      <div class="servicio-num">05</div>
-      <div class="servicio-nombre">Formación y Talleres</div>
-      <div class="servicio-desc">Programas de capacitación diseñados a medida: liderazgo, comunicación, toma de decisiones y trabajo en equipo.</div>
-    </div>
-    <div class="servicio-card">
-      <div class="servicio-num">06</div>
-      <div class="servicio-nombre">Diagnóstico Organizacional</div>
-      <div class="servicio-desc">Análisis profundo de la situación actual de tu empresa para identificar oportunidades, bloqueos y focos de mejora.</div>
-    </div>
-  </div>
-</section>
-
 <section id="contacto">
   <div class="contacto-info reveal">
     <div class="section-label">Contacto</div>
@@ -1296,11 +1331,13 @@
         <select id="servicio" name="servicio">
           <option value="" disabled selected>Seleccioná un servicio</option>
           <option>Consultoría Estratégica</option>
-          <option>Coaching Ejecutivo</option>
           <option>Desarrollo Organizacional</option>
           <option>Gestión del Cambio</option>
-          <option>Formación y Talleres</option>
           <option>Diagnóstico Organizacional</option>
+          <option>Empresas Familiares</option>
+          <option>Formación de Directorios</option>
+          <option>Asesoramiento para Nuevos Emprendedores</option>
+          <option>Coaching Ejecutivo</option>
           <option>Otro</option>
         </select>
       </div>
@@ -1321,14 +1358,18 @@
   </div>
 </section>
 
+<!-- WhatsApp flotante -->
+<a class="whatsapp-float" href="https://wa.link/2o7o8e" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  <span class="whatsapp-float-label">¿Hablamos?</span>
+</a>
+
 <footer>
   <div class="footer-logo">ÍTACA<span>Consultoría & Coaching</span></div>
   <p>© 2025 Ítaca · Javier Eduardo Gutiérrez</p>
-  <ul class="footer-links">
-    <li><a href="#sobre">Sobre mí</a></li>
-    <li><a href="#servicios">Áreas de acompañamiento</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
+
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
