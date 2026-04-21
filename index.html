@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -489,6 +488,13 @@
       .pilares-grid {
         grid-template-columns: 1fr;
         gap: 2.5rem;
+      }
+      #pilares {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      .pilar-card {
+        text-align: left;
       }
     }
 
@@ -1000,6 +1006,7 @@
     /* RESPONSIVE */
     @media (max-width: 960px) {
       nav { padding: 1rem 1.5rem; }
+      .nav-logo span { display: none; }
       .nav-hamburger { display: flex; }
       .nav-links {
         display: none;
@@ -1040,6 +1047,11 @@
       .servicios-grid { grid-template-columns: 1fr 1fr; }
       .servicios-header { flex-direction: column; align-items: flex-start; }
       .form-row { grid-template-columns: 1fr; }
+      .contact-form { width: 100%; box-sizing: border-box; }
+      .form-group input,
+      .form-group textarea,
+      .form-group select { width: 100%; box-sizing: border-box; max-width: 100%; }
+      #contacto { padding-left: 1.5rem; padding-right: 1.5rem; overflow: hidden; }
       footer { flex-direction: column; gap: 1.5rem; text-align: center; }
       .pilares-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     }
