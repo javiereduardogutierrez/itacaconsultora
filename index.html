@@ -971,10 +971,54 @@
 
     .footer-links a:hover { color: var(--white); }
 
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.3rem;
+      z-index: 101;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: rgba(255,255,255,0.8);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     /* RESPONSIVE */
     @media (max-width: 960px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--ink);
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        border-top: 1px solid rgba(255,255,255,0.08);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        padding: 0.9rem 2rem;
+        font-size: 0.82rem;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
       #inicio { grid-template-columns: 1fr; min-height: auto; }
       .hero-left { padding: 5rem 1.5rem 2.5rem; }
       .hero-right {
@@ -1001,13 +1045,16 @@
     @media (max-width: 600px) {
       .servicios-grid { grid-template-columns: 1fr; }
       .hero-left { padding: 4rem 1.2rem 2rem; }
-      .hero-right { padding: 0 1.2rem 2.5rem; }
-      .hero-right-inner { padding: 2.5rem 1.5rem; }
-      .hero-stat-grid { grid-template-columns: 1fr 1fr; }
+      .hero-right { padding: 0; width: 100%; }
+      .hero-right-inner { padding: 2rem 1.2rem; width: 100%; box-sizing: border-box; }
+      .hero-stat-grid { grid-template-columns: 1fr 1fr; width: 100%; }
+      .stat-card { padding: 1.4rem 1rem; }
+      .stat-number { font-size: 2rem; }
+      .stat-label { font-size: 0.62rem; }
       section { padding: 3rem 1.2rem; }
       #frase { padding: 3rem 1.2rem; }
-      footer { padding: 2rem 1.2rem; }
-      .footer-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+      footer { padding: 2rem 1.2rem; grid-template-columns: 1fr; justify-items: center; gap: 1.2rem; }
+      .footer-social { justify-content: center; }
     }
 
     /* REVEAL */
@@ -1032,12 +1079,15 @@
 
 <nav id="navbar">
   <a class="nav-logo" href="#inicio">ÍTACA<span>Consultoría & Coaching</span></a>
-  <ul class="nav-links">
-    <li><a href="#pilares">Propuesta</a></li>
-    <li><a href="#sobre">Sobre mí</a></li>
-    <li><a href="#servicios">Áreas de acompañamiento</a></li>
-    <li><a href="#video">Videos</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#pilares" onclick="closeMenu()">Propuesta</a></li>
+    <li><a href="#sobre" onclick="closeMenu()">Sobre mí</a></li>
+    <li><a href="#servicios" onclick="closeMenu()">Áreas de acompañamiento</a></li>
+    <li><a href="#video" onclick="closeMenu()">Videos</a></li>
+    <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
   </ul>
 </nav>
 
@@ -1410,6 +1460,18 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
+  function toggleMenu() {
+    const links = document.getElementById('nav-links');
+    const btn = document.getElementById('nav-hamburger');
+    links.classList.toggle('open');
+    btn.classList.toggle('open');
+  }
+
+  function closeMenu() {
+    document.getElementById('nav-links').classList.remove('open');
+    document.getElementById('nav-hamburger').classList.remove('open');
+  }
+
   const navbar = document.getElementById('navbar');
 
   window.addEventListener('scroll', () => {
